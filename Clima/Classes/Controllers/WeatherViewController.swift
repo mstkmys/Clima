@@ -13,7 +13,7 @@ class WeatherViewController: UIViewController {
     let weatherView: WeatherView = {
        
         let weatherView = WeatherView(frame: UIScreen.main.bounds)
-        weatherView.backgroundColor = .white
+        weatherView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background"))
         
         return weatherView
         
@@ -24,6 +24,17 @@ class WeatherViewController: UIViewController {
         
         // Add View
         [weatherView].forEach{ self.view.addSubview($0) }
+        
+        setNavigationController()
+        
+    }
+    
+    // MARK: Methods
+    
+    private func setNavigationController() {
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
     }
 
