@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
+import Alamofire
+import SwiftyJSON
 
 class WeatherViewController: UIViewController {
     
@@ -18,6 +21,13 @@ class WeatherViewController: UIViewController {
         return weatherView
         
     }()
+    
+    let WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather"
+    let API_KEY = "d11d0ccee8179c66d525b4529a3bff4f"
+    
+    // MARK: Properties
+    
+    let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +36,11 @@ class WeatherViewController: UIViewController {
         [weatherView].forEach{ self.view.addSubview($0) }
         
         setNavigationController()
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         
     }
     
@@ -37,7 +52,64 @@ class WeatherViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
     }
+    
+    // MARK: - Networking
+    /**********************************************************************************************/
+    private func getWeatherData(url: String, parameters: [String: String]) {
+        
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+            
+            if response.result.isSuccess {
+                print("Success get Data.")
+                
+                
+                
+            }
+            else {
+                print("Error: \(String(describing: response.result.error))")
+                self.weatherView.citylabel.text = "Connection Issue"
+            }
+            
+        }
+        
+    }
+    
+    // MARK: - JSON Perse
+    /**********************************************************************************************/
+    
+    // MARK: - UpdateUI
+    /**********************************************************************************************/
 
+}
+
+// MARK: - CLLocationManagerDelegate
+/**********************************************************************************************/
+extension WeatherViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let location = locations[locations.count - 1]
+        if location.horizontalAccuracy > 0 {
+            locationManager.stopUpdatingLocation()
+            
+            let latitude = String(location.coordinate.latitude)
+            let longitude = String(location.coordinate.longitude)
+            
+            let params = ["lat": latitude, "lon": longitude, "appid": API_KEY]
+            
+            getWeatherData(url: WEATHER_URL, parameters: params)
+            
+        }
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        
+        print("Locationmanager Error [\(error)]")
+        weatherView.citylabel.text = "Location Unavailable"
+        
+    }
+    
 }
 
 
