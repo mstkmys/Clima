@@ -18,6 +18,7 @@
 		684F00F7205246B30084CB5C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684F00F4205246B30084CB5C /* SwiftyJSON.framework */; };
 		684F00F8205246B30084CB5C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684F00F5205246B30084CB5C /* Alamofire.framework */; };
 		684F00F9205246B30084CB5C /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684F00F6205246B30084CB5C /* SVProgressHUD.framework */; };
+		684F00FD2052D13A0084CB5C /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F00FC2052D13A0084CB5C /* WeatherData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		684F00F4205246B30084CB5C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		684F00F5205246B30084CB5C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		684F00F6205246B30084CB5C /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
+		684F00FC2052D13A0084CB5C /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 		684F00E82052333F0084CB5C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				684F00FB2052D1240084CB5C /* Models */,
 				684F00EC205233700084CB5C /* Views */,
 				684F00EB205233670084CB5C /* Controllers */,
 				684F00EA2052335F0084CB5C /* Extensions */,
@@ -186,6 +189,14 @@
 				684F00F4205246B30084CB5C /* SwiftyJSON.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		684F00FB2052D1240084CB5C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				684F00FC2052D13A0084CB5C /* WeatherData.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				684F00F2205234120084CB5C /* UIView.swift in Sources */,
+				684F00FD2052D13A0084CB5C /* WeatherData.swift in Sources */,
 				684F00F0205233DE0084CB5C /* WeatherView.swift in Sources */,
 				684F00EE205233B40084CB5C /* WeatherViewController.swift in Sources */,
 				684F00BB205231CC0084CB5C /* AppDelegate.swift in Sources */,

@@ -28,6 +28,7 @@ class WeatherViewController: UIViewController {
     // MARK: Properties
     
     let locationManager = CLLocationManager()
+    let weatherData = WeatherData()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +63,8 @@ class WeatherViewController: UIViewController {
             if response.result.isSuccess {
                 print("Success get Data.")
                 
-                
+                let weatherJSON = JSON(response.result.value!)
+                self.updataWeatherData(json: weatherJSON)
                 
             }
             else {
@@ -76,6 +78,21 @@ class WeatherViewController: UIViewController {
     
     // MARK: - JSON Perse
     /**********************************************************************************************/
+    private func updataWeatherData(json: JSON) {
+        
+        guard let tempResult = json["main"]["temp"].double else {
+            
+            weatherView.citylabel.text = "Weather Unavailable"
+            return
+            
+        }
+        
+        weatherData.temperature = Int(tempResult - 273.15)
+        weatherData.city = json["name"].stringValue
+        weatherData.condition = json["weather"][0]["id"].intValue
+        weatherData.weatherIcon = weatherData.updataWeatherIcon(condition: weatherData.condition)
+        
+    }
     
     // MARK: - UpdateUI
     /**********************************************************************************************/
