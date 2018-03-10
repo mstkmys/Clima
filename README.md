@@ -6,7 +6,7 @@
 )](https://developer.apple.com/swift)
 [![Twitter](https://img.shields.io/badge/twitter-@mstkmys-blue.svg?style=flat)](https://twitter.com/mstkmys)
 
-This app is Weather application.
+![clima](https://user-images.githubusercontent.com/12792235/37238634-15eb87be-246e-11e8-8acc-e1e18c8da7ea.gif)
 
 ## Author
 **Masataka Miyoshi**
