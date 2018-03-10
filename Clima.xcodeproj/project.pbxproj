@@ -19,6 +19,8 @@
 		684F00F8205246B30084CB5C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684F00F5205246B30084CB5C /* Alamofire.framework */; };
 		684F00F9205246B30084CB5C /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684F00F6205246B30084CB5C /* SVProgressHUD.framework */; };
 		684F00FD2052D13A0084CB5C /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F00FC2052D13A0084CB5C /* WeatherData.swift */; };
+		684F00FF2052DF4C0084CB5C /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F00FE2052DF4C0084CB5C /* EnterViewController.swift */; };
+		684F01012052DF6F0084CB5C /* EnterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F01002052DF6F0084CB5C /* EnterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		684F00F5205246B30084CB5C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		684F00F6205246B30084CB5C /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		684F00FC2052D13A0084CB5C /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		684F00FE2052DF4C0084CB5C /* EnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterViewController.swift; sourceTree = "<group>"; };
+		684F01002052DF6F0084CB5C /* EnterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				684F00ED205233B40084CB5C /* WeatherViewController.swift */,
+				684F00FE2052DF4C0084CB5C /* EnterViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				684F00EF205233DE0084CB5C /* WeatherView.swift */,
+				684F01002052DF6F0084CB5C /* EnterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -355,8 +361,10 @@
 				684F00F2205234120084CB5C /* UIView.swift in Sources */,
 				684F00FD2052D13A0084CB5C /* WeatherData.swift in Sources */,
 				684F00F0205233DE0084CB5C /* WeatherView.swift in Sources */,
+				684F01012052DF6F0084CB5C /* EnterView.swift in Sources */,
 				684F00EE205233B40084CB5C /* WeatherViewController.swift in Sources */,
 				684F00BB205231CC0084CB5C /* AppDelegate.swift in Sources */,
+				684F00FF2052DF4C0084CB5C /* EnterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

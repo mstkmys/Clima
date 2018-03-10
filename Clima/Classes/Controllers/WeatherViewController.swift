@@ -51,6 +51,23 @@ class WeatherViewController: UIViewController {
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.tintColor = .white
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: #imageLiteral(resourceName: "switch"),
+            style: .plain,
+            target: self,
+            action: #selector(switchButtonTapped)
+        )
+        
+    }
+    
+    // MARK: Actions
+    
+    @objc private func switchButtonTapped() {
+        
+        let viewController = EnterViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
         
     }
     
@@ -81,10 +98,8 @@ class WeatherViewController: UIViewController {
     private func updataWeatherData(json: JSON) {
         
         guard let tempResult = json["main"]["temp"].double else {
-            
             weatherView.citylabel.text = "Weather Unavailable"
             return
-            
         }
         
         weatherData.temperature = Int(tempResult - 273.15)
@@ -92,10 +107,19 @@ class WeatherViewController: UIViewController {
         weatherData.condition = json["weather"][0]["id"].intValue
         weatherData.weatherIcon = weatherData.updataWeatherIcon(condition: weatherData.condition)
         
+        updateUIWithWeatherData()
+        
     }
     
     // MARK: - UpdateUI
     /**********************************************************************************************/
+    private func updateUIWithWeatherData() {
+        
+        weatherView.citylabel.text = weatherData.city
+        weatherView.temperatureLabel.text = "\(weatherData.temperature)°"
+        weatherView.weatherImageView.image = weatherData.weatherIcon
+        
+    }
 
 }
 
@@ -108,6 +132,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
         let location = locations[locations.count - 1]
         if location.horizontalAccuracy > 0 {
             locationManager.stopUpdatingLocation()
+            locationManager.delegate = nil
             
             let latitude = String(location.coordinate.latitude)
             let longitude = String(location.coordinate.longitude)

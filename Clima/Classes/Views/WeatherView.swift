@@ -13,6 +13,7 @@ class WeatherView: UIView {
     let weatherImageView: UIImageView = {
        
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
         
         return imageView
         
@@ -24,7 +25,7 @@ class WeatherView: UIView {
         label.text = "Loading..."
         label.textAlignment = .left
         label.textColor = .white
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: 30)
         
         return label
         
@@ -71,7 +72,7 @@ class WeatherView: UIView {
             leading: self.leadingAnchor,
             bottom: citylabel.topAnchor,
             trailing: self.trailingAnchor,
-            padding: .init(top: -50, left: 10, bottom: 10, right: 10)
+            padding: .init(top: -50, left: 50, bottom: 10, right: 50)
         )
         
         temperatureLabel.anchor(
