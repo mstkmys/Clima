@@ -34,7 +34,7 @@ class WeatherView: UIView {
     let temperatureLabel: UILabel = {
        
         let label = UILabel()
-        label.text = "20°"
+        label.text = "0°"
         label.textAlignment = .right
         label.textColor = .white
         label.font = .systemFont(ofSize: 50)

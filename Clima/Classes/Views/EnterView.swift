@@ -29,6 +29,8 @@ class EnterView: UIView {
         textField.placeholder = "Enter City Name"
         textField.textAlignment = .center
         textField.layer.cornerRadius = 5
+        textField.returnKeyType = .done
+        textField.enablesReturnKeyAutomatically = true
         
         return textField
         

@@ -67,6 +67,7 @@ class WeatherViewController: UIViewController {
     @objc private func switchButtonTapped() {
         
         let viewController = EnterViewController()
+        viewController.delegate = self
         self.navigationController?.pushViewController(viewController, animated: true)
         
     }
@@ -149,6 +150,20 @@ extension WeatherViewController: CLLocationManagerDelegate {
         
         print("Locationmanager Error [\(error)]")
         weatherView.citylabel.text = "Location Unavailable"
+        
+    }
+    
+}
+
+// MARK: - EnterDelegate
+/**********************************************************************************************/
+extension WeatherViewController: EnterDelegate {
+    
+    func userEnteredACity(name: String) {
+        
+        let params = ["q": name, "appid": API_KEY]
+        
+        getWeatherData(url: WEATHER_URL, parameters: params)
         
     }
     

@@ -8,6 +8,11 @@
 
 import UIKit
 
+// protocol
+protocol EnterDelegate {
+    func userEnteredACity(name: String)
+}
+
 class EnterViewController: UIViewController {
     
     let enterView: EnterView = {
@@ -19,6 +24,8 @@ class EnterViewController: UIViewController {
         return enterView
         
     }()
+    
+    var delegate: EnterDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +33,30 @@ class EnterViewController: UIViewController {
         // Add Views
         [enterView].forEach{ self.view.addSubview($0) }
         
+        // deledate
+        self.enterView.enterTextField.delegate = self
+        
     }
 
+}
+
+// MARK: - UITextFieldDelegate
+/**********************************************************************************************/
+extension EnterViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        let cityName = textField.text!
+        // Set Delegate
+        delegate?.userEnteredACity(name: cityName)
+        
+        enterView.enterTextField.resignFirstResponder()
+        self.navigationController?.popViewController(animated: true)
+        
+        return true
+        
+    }
+    
 }
 
 
